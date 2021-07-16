@@ -12,7 +12,7 @@ class SolitaireGame {
     tableauPiles = List.generate(
         _pileCount,
         (index) => SolitairePile(deck
-            .takeN(index + 1)
+            .takeN(index == 0 ? 13 : index + 1)
             .map((card) =>
                 SolitaireCard.fromStandardCard(card, isFaceDown: true))
             .toList()));
@@ -116,8 +116,8 @@ class SolitaireGame {
     }
     SolitaireCard? targetCard = targetPile.topCard;
     if (targetCard != null) {
-      return movedCard.value == targetCard.value - 1;
-      // &&targetCard.isRed != movedCard.isRed;
+      return movedCard.value == targetCard.value - 1 &&
+          targetCard.isRed != movedCard.isRed;
     } else {
       return movedCard.value == king;
     }

@@ -78,7 +78,7 @@ class _MainPageState extends State<MainPage>
 
   double get gutterWidth => screenUnit * 2;
   double get cardWidth => screenUnit * 10;
-  Offset get tableauCardOffset => Offset(0, screenUnit * 5);
+  Offset get tableauCardOffset => Offset(0, screenUnit * 4);
   Offset get wasteCardOffset => const Offset(0, 0);
 
   late final AnimationController winAnimationController = AnimationController(
