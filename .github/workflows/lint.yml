@@ -7,9 +7,9 @@ name: lint
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -28,14 +28,14 @@ jobs:
       - name: Install flutter dependencies
         run: flutter pub get
 
-      - name: Build mockito files
-        run: flutter pub run build_runner build
+      # - name: Build mockito files
+      #   run: flutter pub run build_runner build
         
-      - name: Upload test files
-        uses: actions/upload-artifact@v2
-        with:
-          name: test-files
-          path: ./test
+      # - name: Upload test files
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: test-files
+      #     path: ./test
 
   lint-checks:
     name: Check linting
@@ -54,11 +54,11 @@ jobs:
       - name: Install flutter dependencies
         run: flutter pub get
                 
-      - name: Download test files
-        uses: actions/download-artifact@v2
-        with:
-          name: test-files
-          path: ./test
+      # - name: Download test files
+      #   uses: actions/download-artifact@v2
+      #   with:
+      #     name: test-files
+      #     path: ./test
           
       - name: Analyze project source
         run: flutter analyze
