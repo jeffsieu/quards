@@ -1,0 +1,64 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: lint
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install flutter
+        uses: subosito/flutter-action@v1.5.3
+        with:
+          # The Flutter version to make available on the path
+          flutter-version: '2.2.0'
+
+      - name: Install flutter dependencies
+        run: flutter pub get
+
+      - name: Build mockito files
+        run: flutter pub run build_runner build
+        
+      - name: Upload test files
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-files
+          path: ./test
+
+  lint-checks:
+    name: Check linting
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install flutter
+        uses: subosito/flutter-action@v1.5.3
+        with:
+          # The Flutter version to make available on the path
+          flutter-version: '2.2.0'
+
+      - name: Install flutter dependencies
+        run: flutter pub get
+                
+      - name: Download test files
+        uses: actions/download-artifact@v2
+        with:
+          name: test-files
+          path: ./test
+          
+      - name: Analyze project source
+        run: flutter analyze
