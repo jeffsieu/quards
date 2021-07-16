@@ -12,7 +12,7 @@ class SolitaireGame {
     tableauPiles = List.generate(
         _pileCount,
         (index) => SolitairePile(deck
-            .takeN(index == 0 ? 13 : index + 1)
+            .takeN(index + 1)
             .map((card) =>
                 SolitaireCard.fromStandardCard(card, isFaceDown: true))
             .toList()));
