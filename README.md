@@ -12,3 +12,7 @@ Some card games made using Flutter, because why not?
 ## Games
 
 - Solitaire
+
+## Screenshots
+
+![Screenshot of Solitaire game](assets/screenshot.png)
