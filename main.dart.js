@@ -48684,7 +48684,7 @@ return new Y.d1(H.cM(s,a,null,H.a_(s).c).di(0),this.$ti)},
 h:function(a){return P.q9(this.a,"[","]")}}
 Q.U3.prototype={
 JH:function(){var s,r,q,p,o,n,m,l,k=this,j=F.ahS(),i=t.ou,h=J.yG(7,i)
-for(s=0;s<7;++s){r=s===0?13:s+1
+for(s=0;s<7;s=r){r=s+1
 q=j.a
 p=H.a_(q)
 o=p.i("dt<1>")
@@ -48698,25 +48698,25 @@ j.a=m.di(0)
 o=o.i("am<au.E,bN>")
 h[s]=new Y.d1(P.ak(new H.am(n,new Q.Uc(),o),!0,o.i("au.E")),i)}if(k.b==null)k.b=h
 else H.f(H.iN("tableauPiles"))
-for(r=k.gp7(),q=r.length,l=0;l<r.length;r.length===q||(0,H.G)(r),++l){p=r[l].a
-p=p.length>0?C.b.gE(p):null
-p.b=!p.b}r=Q.ahL(j)
-if(k.a==null)k.a=r
+for(q=k.gp7(),p=q.length,l=0;l<q.length;q.length===p||(0,H.G)(q),++l){o=q[l].a
+o=o.length>0?C.b.gE(o):null
+o.b=!o.b}q=Q.ahL(j)
+if(k.a==null)k.a=q
 else H.f(H.iN("stock"))
 h=J.yG(4,i)
-for(r=t.c3,s=0;s<4;++s){q=H.a(new Array(0),r)
-h[s]=new Y.d1(q,i)}if(k.e==null)k.e=h
+for(q=t.c3,s=0;s<4;++s){p=H.a(new Array(0),q)
+h[s]=new Y.d1(p,i)}if(k.e==null)k.e=h
 else H.f(H.iN("foundations"))
-r=t.fz
-q=H.a([],r)
-if(k.f==null)k.f=q
+q=t.fz
+p=H.a([],q)
+if(k.f==null)k.f=p
 else H.f(H.iN("moves"))
-r=H.a([],r)
-if(k.r==null)k.r=r
+q=H.a([],q)
+if(k.r==null)k.r=q
 else H.f(H.iN("undoneMoves"))
-r=P.ak(k.gp7(),!0,i)
-r.push(k.geY().b)
-if(k.c==null)k.c=r
+q=P.ak(k.gp7(),!0,i)
+q.push(k.geY().b)
+if(k.c==null)k.c=q
 else H.f(H.iN("drawablePiles"))
 i=P.ak(k.gp7(),!0,i)
 C.b.F(i,k.gh7())
