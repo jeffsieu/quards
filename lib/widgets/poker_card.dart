@@ -106,33 +106,33 @@ class PokerCard extends StatelessWidget {
     );
   }
 
+  Widget _buildCornerText(BuildContext context) {
+    return Text(
+      '${card!.valueString}\n${card!.suit.toDisplayString()}',
+      textAlign: TextAlign.center,
+      style: Theme.of(context).textTheme.headline3?.copyWith(
+          color: card!.isRed
+              ? Colors.red.shade300
+              : Theme.of(context).colorScheme.onSurface,
+          fontFamilyFallback: ['Noto Sans JP'],
+          height: 1),
+    );
+  }
+
   Widget _buildCardFront(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Stack(
         children: [
           Positioned(
-            child: Text(
-              '${card!.valueString}\n${card!.suit.toDisplayString()}',
-              style: Theme.of(context).textTheme.headline3?.copyWith(
-                  color: card!.isRed
-                      ? Colors.red.shade300
-                      : Theme.of(context).colorScheme.onSurface,
-                  height: 1),
-            ),
+            child: _buildCornerText(context),
           ),
           Positioned(
             bottom: 0,
             right: 0,
             child: Transform.rotate(
               angle: math.pi,
-              child: Text(
-                '${card!.valueString}\n${card!.suit.toDisplayString()}',
-                style: Theme.of(context).textTheme.headline3?.copyWith(
-                    color: card!.isRed
-                        ? Colors.red.shade300
-                        : Theme.of(context).colorScheme.onSurface),
-              ),
+              child: _buildCornerText(context),
             ),
           ),
           Center(

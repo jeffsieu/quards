@@ -75,7 +75,6 @@ class _MainPageState extends State<MainPage>
   };
 
   double get screenUnit => calculateScreenUnit();
-
   double get gutterWidth => screenUnit * 2;
   double get cardWidth => screenUnit * 10;
   Offset get tableauCardOffset => Offset(0, screenUnit * 4);
@@ -349,6 +348,7 @@ class _MainPageState extends State<MainPage>
   }
 
   Widget _buildShortcuts({required Widget child}) {
+    bool canUseShortcut = draggedLocation == null;
     return Shortcuts(
         shortcuts: {
           LogicalKeySet(LogicalKeyboardKey.keyR): const NewGameIntent(),
@@ -365,30 +365,50 @@ class _MainPageState extends State<MainPage>
         child: Actions(
           actions: <Type, Action<Intent>>{
             UndoIntent: CallbackAction<UndoIntent>(
-              onInvoke: (UndoIntent intent) => setState(() {
-                if (game.canUndo()) undoPreviousMove();
-              }),
+              onInvoke: (UndoIntent intent) {
+                if (canUseShortcut) {
+                  setState(() {
+                    if (game.canUndo()) undoPreviousMove();
+                  });
+                }
+              },
             ),
             RedoIntent: CallbackAction<RedoIntent>(
-              onInvoke: (RedoIntent intent) => setState(() {
-                if (game.canRedo()) redoPreviousMove();
-              }),
+              onInvoke: (RedoIntent intent) {
+                if (canUseShortcut) {
+                  setState(() {
+                    if (game.canRedo()) redoPreviousMove();
+                  });
+                }
+              },
             ),
             NewGameIntent: CallbackAction<NewGameIntent>(
-              onInvoke: (NewGameIntent intent) => setState(() {
-                startNewGame(context);
-              }),
+              onInvoke: (NewGameIntent intent) {
+                if (canUseShortcut) {
+                  setState(() {
+                    startNewGame(context);
+                  });
+                }
+              },
             ),
             MoveCardsToFoundationIntent:
                 CallbackAction<MoveCardsToFoundationIntent>(
-              onInvoke: (MoveCardsToFoundationIntent intent) => setState(() {
-                game.makeAllPossibleFoundationMoves();
-              }),
+              onInvoke: (MoveCardsToFoundationIntent intent) {
+                if (canUseShortcut) {
+                  setState(() {
+                    game.makeAllPossibleFoundationMoves();
+                  });
+                }
+              },
             ),
             DrawFromStockIntent: CallbackAction<DrawFromStockIntent>(
-                onInvoke: (DrawFromStockIntent intent) => setState(() {
-                      drawFromStockPile();
-                    })),
+                onInvoke: (DrawFromStockIntent intent) {
+              if (canUseShortcut) {
+                setState(() {
+                  drawFromStockPile();
+                });
+              }
+            }),
           },
           child: Focus(
             autofocus: true,
