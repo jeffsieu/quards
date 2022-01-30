@@ -7,7 +7,7 @@
 
 Some card games made using Flutter, because why not?
 
-[Try here](https://jeffsieu.github.io/quards/)
+[Try here](https://quards.jeffsieu.com/)
 
 ## Games
 
