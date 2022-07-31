@@ -1,15 +1,14 @@
 import 'dart:collection';
 import 'dart:math';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:quards/models/deck.dart';
 import 'package:quards/models/games/solitaire/card.dart';
 import 'package:quards/models/games/solitaire/moves.dart';
 import 'package:quards/models/games/solitaire/solitaire.dart';
 import 'package:quards/models/shortcuts/intents.dart';
-import 'package:quards/models/deck.dart';
 
 import 'models/games/solitaire/pile.dart';
 import 'widgets/draggable_card.dart';
@@ -17,7 +16,6 @@ import 'widgets/overlap_stack.dart';
 import 'widgets/poker_card.dart';
 
 void main() {
-  // timeDilation = 0.5;
   runApp(Quards());
 }
 
@@ -371,6 +369,7 @@ class _MainPageState extends State<MainPage>
                     if (game.canUndo()) undoPreviousMove();
                   });
                 }
+                return null;
               },
             ),
             RedoIntent: CallbackAction<RedoIntent>(
@@ -380,6 +379,7 @@ class _MainPageState extends State<MainPage>
                     if (game.canRedo()) redoPreviousMove();
                   });
                 }
+                return null;
               },
             ),
             NewGameIntent: CallbackAction<NewGameIntent>(
@@ -389,6 +389,7 @@ class _MainPageState extends State<MainPage>
                     startNewGame(context);
                   });
                 }
+                return null;
               },
             ),
             MoveCardsToFoundationIntent:
@@ -399,6 +400,7 @@ class _MainPageState extends State<MainPage>
                     game.makeAllPossibleFoundationMoves();
                   });
                 }
+                return null;
               },
             ),
             DrawFromStockIntent: CallbackAction<DrawFromStockIntent>(
@@ -408,6 +410,7 @@ class _MainPageState extends State<MainPage>
                   drawFromStockPile();
                 });
               }
+              return null;
             }),
           },
           child: Focus(

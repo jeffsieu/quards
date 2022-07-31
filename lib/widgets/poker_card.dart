@@ -1,7 +1,8 @@
 import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
-import 'package:quards/models/games/solitaire/card.dart';
 import 'package:quards/models/deck.dart';
+import 'package:quards/models/games/solitaire/card.dart';
 
 class PokerCard extends StatelessWidget {
   PokerCard(

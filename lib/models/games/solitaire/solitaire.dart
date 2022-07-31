@@ -206,6 +206,7 @@ class SolitaireGame {
     if (_canMoveToFoundation(card, foundation)) {
       return moveToPile(_getLocation(card), foundation);
     }
+    return null;
   }
 
   bool _canMoveToFoundation(SolitaireCard card, SolitairePile foundation) {
