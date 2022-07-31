@@ -15,9 +15,7 @@ jobs:
       uses: subosito/flutter-action@v1.5.3
       with:
         # The Flutter version to make available on the path
-        flutter-version: '2.8.1'
-        
-    - run: flutter config --enable-web
+        flutter-version: '3.0.5'
     
     - run: flutter pub get
     
