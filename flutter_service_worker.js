@@ -3,22 +3,23 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "canvaskit/profiling/canvaskit.js": "f3bfccc993a1e0bfdd3440af60d99df4",
-"canvaskit/profiling/canvaskit.wasm": "a9610cf39260f60fbe7524a785c66101",
-"canvaskit/canvaskit.js": "43fa9e17039a625450b6aba93baf521e",
-"canvaskit/canvaskit.wasm": "04ed3c745ff1dee16504be01f9623498",
-"index.html": "2da2dffb88c117cd363974d23e0f7ccd",
-"/": "2da2dffb88c117cd363974d23e0f7ccd",
+  "canvaskit/profiling/canvaskit.js": "ae2949af4efc61d28a4a80fffa1db900",
+"canvaskit/profiling/canvaskit.wasm": "95e736ab31147d1b2c7b25f11d4c32cd",
+"canvaskit/canvaskit.js": "c2b4e5f3d7a3d82aed024e7249a78487",
+"canvaskit/canvaskit.wasm": "4b83d89d9fecbea8ca46f2f760c5a9ba",
+"index.html": "22b1373f8b15fc4b10adac6be5a5e6da",
+"/": "22b1373f8b15fc4b10adac6be5a5e6da",
 "favicon.png": "576059671e4ee641ba302cd757b421fa",
-"main.dart.js": "0e8afe36f69b0071192e20f14caa65f8",
+"main.dart.js": "3d370c4db85823c7b81a362e2f5de373",
 "manifest.json": "57415141b97878936a74c5a21c4650c6",
 "version.json": "50ce975b39e6623a5922bc50f4b5e132",
+"flutter.js": "eb2682e33f25cd8f1fc59011497c35f8",
 "icons/Icon-512.png": "636cec1b5c69c2428b53b0b62397b406",
 "icons/Icon-192.png": "44a77a0f314f263415a6b500543e72b2",
 "assets/FontManifest.json": "ce6a6f7f8f1f0b77a84fd885d43758db",
-"assets/NOTICES": "7c86a910f582fb1784ec745453ffb883",
+"assets/NOTICES": "18e62c523daf43563b3001cb873459f0",
 "assets/fonts/NotoSansJP-Regular.otf": "2bbd3068a53daa60b61f29c3ee9531e7",
-"assets/fonts/MaterialIcons-Regular.otf": "4e6447691c9509f7acdbf8a931a85ca1",
+"assets/fonts/MaterialIcons-Regular.otf": "95db9098c58fd6db106f1116bae85a0b",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/AssetManifest.json": "8cc6f93fc94f7564abf0e563fb515714"
 };
@@ -26,8 +27,7 @@ const RESOURCES = {
 // The application shell files that are downloaded before a service worker can
 // start.
 const CORE = [
-  "/",
-"main.dart.js",
+  "main.dart.js",
 "index.html",
 "assets/NOTICES",
 "assets/AssetManifest.json",
