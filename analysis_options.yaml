@@ -1,9 +1,5 @@
 include: package:flutter_lints/flutter.yaml
 
 linter:
-  rules: 
+  rules:
     - directives_ordering
-
-analyzer:
-  enable-experiment:
-    - nonfunction-type-aliases
