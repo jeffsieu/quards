@@ -147,7 +147,7 @@ class _DraggableCardState<T extends Object> extends State<DraggableCard<T>>
       // TODO: Update the card by animating it
     }
     releasedNotifierCallback();
-    WidgetsBinding.instance!.scheduleFrameCallback((timeStamp) {
+    WidgetsBinding.instance.scheduleFrameCallback((timeStamp) {
       releasedNotifierCallback();
     });
     widget.releasedNotifier?.addListener(releasedNotifierCallback);
@@ -313,11 +313,11 @@ class _DraggableCardState<T extends Object> extends State<DraggableCard<T>>
   // }
 
   Future<void> springBackFrom(Offset offset) async {
-    if (_gestureDetectorKey.currentContext?.findRenderObject() == null) {
+    final renderBox = _gestureDetectorKey.currentContext?.findRenderObject();
+    if (renderBox == null) {
       return;
     }
-    RenderBox box =
-        _gestureDetectorKey.currentContext!.findRenderObject() as RenderBox;
+    RenderBox box = renderBox as RenderBox;
     draggableReleasedOffset = box.globalToLocal(offset);
     final double longestScreenSide = MediaQuery.of(context).size.longestSide;
 

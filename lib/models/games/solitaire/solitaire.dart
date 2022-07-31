@@ -17,7 +17,7 @@ class SolitaireGame {
                 SolitaireCard.fromStandardCard(card, isFaceDown: true))
             .toList()));
     for (SolitairePile pile in tableauPiles) {
-      pile.topCard!.flip();
+      pile.topCard?.flip();
     }
     stock = SolitaireStock(deck);
     foundations = List.generate(

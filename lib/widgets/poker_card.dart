@@ -109,10 +109,10 @@ class PokerCard extends StatelessWidget {
 
   Widget _buildCornerText(BuildContext context) {
     return Text(
-      '${card!.valueString}\n${card!.suit.toDisplayString()}',
+      '${card?.valueString}\n${card?.suit.toDisplayString()}',
       textAlign: TextAlign.center,
       style: Theme.of(context).textTheme.headline3?.copyWith(
-          color: card!.isRed
+          color: (card?.isRed ?? false)
               ? Colors.red.shade300
               : Theme.of(context).colorScheme.onSurface,
           fontFamilyFallback: ['Noto Sans JP'],

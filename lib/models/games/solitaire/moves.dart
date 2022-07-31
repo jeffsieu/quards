@@ -43,10 +43,11 @@ class TableauPileMove extends PileMove {
   void execute() {
     super.execute();
     SolitairePile originPile = origin.pile;
-    if (originPile.topCard != null) {
-      if (originPile.topCard!.isFaceDown) {
-        originPile.topCard!.flip();
-        flippedCard = originPile.topCard;
+    final topCard = originPile.topCard;
+    if (topCard != null) {
+      if (topCard.isFaceDown) {
+        topCard.flip();
+        flippedCard = topCard;
       }
     }
   }
@@ -80,7 +81,7 @@ class StockPileMove extends PileMove {
   void move(SolitairePile fromPile, SolitairePile toPile) {
     if (fromPile.isNotEmpty) {
       final SolitairePile topCardPile = fromPile.peekTopCard();
-      topCardPile.topCard!.flip();
+      topCardPile.topCard?.flip();
       if (fromPile == stock.stockPile) {
         super.execute();
       } else {
@@ -91,7 +92,7 @@ class StockPileMove extends PileMove {
       // Stock pile is empty, return all from waste pile to stock pile
       while (toPile.isNotEmpty) {
         final SolitairePile topCardPile = toPile.removeTopCard();
-        topCardPile.topCard!.flip();
+        topCardPile.topCard?.flip();
         fromPile.appendPile(topCardPile);
       }
     }

@@ -21,7 +21,6 @@ void main() {
 
 class Quards extends StatelessWidget {
   Quards({Key? key}) : super(key: key);
-  // This widget is the root of your application.
 
   final ThemeData data = ThemeData(
     brightness: Brightness.dark,
@@ -421,9 +420,11 @@ class _MainPageState extends State<MainPage>
   }
 
   Widget _buildCard(SolitaireCard card, SolitaireCardLocation location) {
-    final bool isDraggedByAnotherCard = draggedLocation != null
-        ? location.pile == draggedLocation!.pile &&
-            location.row >= draggedLocation!.row
+    final _draggedLocation = draggedLocation;
+    final _hoveredLocation = hoveredLocation;
+    final bool isDraggedByAnotherCard = _draggedLocation != null
+        ? location.pile == _draggedLocation.pile &&
+            location.row >= _draggedLocation.row
         : false;
     final bool isReturning = animatingCards.contains(card);
     final bool isRenderedByAnotherCard = isDraggedByAnotherCard || isReturning;
@@ -433,9 +434,9 @@ class _MainPageState extends State<MainPage>
         elevation: 10.0,
         hoverElevation: 10.0,
         data: location,
-        forceHovering: hoveredLocation != null
-            ? location.pile == hoveredLocation!.pile &&
-                location.row >= hoveredLocation!.row
+        forceHovering: _hoveredLocation != null
+            ? location.pile == _hoveredLocation.pile &&
+                location.row >= _hoveredLocation.row
             : null,
         onDoubleTap: () {
           tryMoveToFoundation(card, location);
@@ -492,11 +493,6 @@ class _MainPageState extends State<MainPage>
         shouldUpdateOnRelease: (HoverReleaseDetails? details) {
           if (details == null) return false;
           return details.card == card.standardCard;
-          // if (releasedCardOrigin[card.standardCard] == location) {
-          //   print('nice la cunt');
-          //   print(releasedCardOrigin);
-          // }
-          // return releasedCardDestination[card.standardCard] == location;
         },
         builder: (context, child, elevation, isDragged, scale) {
           if (isDragged) {
