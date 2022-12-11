@@ -97,6 +97,10 @@ class SolitaireGame {
 
     bool isSamePile = location.pile == targetPile;
     if (isSamePile) return false;
+    
+    // Cannot return to waste or stock piles
+    bool isWasteOrStock = isWastePile(targetPile) || isStockPile(targetPile);
+    if (isWasteOrStock) return false;
 
     bool isFoundation = isFoundationPile(targetPile);
     if (isFoundation) {
