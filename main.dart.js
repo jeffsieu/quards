@@ -50351,6 +50351,7 @@ CB(){for(var s=!0;s;)s=this.Oy()},
 RO(a,b){var s,r,q=a.b,p=a.a,o=q.a,n=o[p]
 if(n.b)return!1
 if(q===b)return!1
+if(A.d(this.a,"stock").b===b||A.d(this.a,"stock").a===b)return!1
 if(J.m1(A.d(this.e,"foundations"),b)){if(p!==o.length-1)return!1
 p=o[p]
 o=b.a
