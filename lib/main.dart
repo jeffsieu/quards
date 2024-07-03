@@ -422,11 +422,9 @@ class MainPageState extends State<MainPage>
   }
 
   Widget _buildCard(SolitaireCard card, SolitaireCardLocation location) {
-    final _draggedLocation = draggedLocation;
-    final _hoveredLocation = hoveredLocation;
-    final bool isDraggedByAnotherCard = _draggedLocation != null
-        ? location.pile == _draggedLocation.pile &&
-            location.row >= _draggedLocation.row
+    final bool isDraggedByAnotherCard = draggedLocation != null
+        ? location.pile == draggedLocation!.pile &&
+            location.row >= draggedLocation!.row
         : false;
     final bool isReturning = animatingCards.contains(card);
     final bool isRenderedByAnotherCard = isDraggedByAnotherCard || isReturning;
@@ -436,9 +434,9 @@ class MainPageState extends State<MainPage>
         elevation: 10.0,
         hoverElevation: 10.0,
         data: location,
-        forceHovering: _hoveredLocation != null
-            ? location.pile == _hoveredLocation.pile &&
-                location.row >= _hoveredLocation.row
+        forceHovering: hoveredLocation != null
+            ? location.pile == hoveredLocation!.pile &&
+                location.row >= hoveredLocation!.row
             : null,
         onDoubleTap: () {
           tryMoveToFoundation(card, location);
