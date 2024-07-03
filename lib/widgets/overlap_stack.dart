@@ -24,13 +24,13 @@ class OverlapStack extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> children =
         List.generate(itemCount, (index) => itemBuilder(context, index));
-    List<Widget> _childrenSortedByZIndex = List.from(children)
+    List<Widget> childrenSortedByZIndex = List.from(children)
       ..sort((child, otherChild) => child.zIndex.compareTo(otherChild.zIndex));
     return Stack(
       // fit: StackFit.expand,
       clipBehavior: Clip.none,
       children: [
-        for (Widget child in _childrenSortedByZIndex) ...{
+        for (Widget child in childrenSortedByZIndex) ...{
           Container(
             padding: EdgeInsets.only(
               left: children.indexOf(child) * childrenOffset.dx,

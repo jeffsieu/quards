@@ -111,7 +111,7 @@ class PokerCard extends StatelessWidget {
     return Text(
       '${card?.valueString}\n${card?.suit.toDisplayString()}',
       textAlign: TextAlign.center,
-      style: Theme.of(context).textTheme.headline3?.copyWith(
+      style: Theme.of(context).textTheme.displaySmall?.copyWith(
           color: (card?.isRed ?? false)
               ? Colors.red.shade300
               : Theme.of(context).colorScheme.onSurface,

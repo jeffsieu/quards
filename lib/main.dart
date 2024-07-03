@@ -46,7 +46,7 @@ class MainPage extends StatefulWidget {
   final String title;
 
   @override
-  _MainPageState createState() => _MainPageState();
+  MainPageState createState() => MainPageState();
 }
 
 class HoverReleaseDetails {
@@ -57,7 +57,7 @@ class HoverReleaseDetails {
   final SolitairePile acceptedPile;
 }
 
-class _MainPageState extends State<MainPage>
+class MainPageState extends State<MainPage>
     with SingleTickerProviderStateMixin {
   SolitaireGame game = SolitaireGame();
   SolitaireCardLocation? hoveredLocation;
@@ -159,11 +159,11 @@ class _MainPageState extends State<MainPage>
                                 ),
                                 height: Theme.of(context)
                                     .textTheme
-                                    .headline2!
+                                    .displayMedium!
                                     .fontSize,
                                 width: Theme.of(context)
                                     .textTheme
-                                    .headline2!
+                                    .displayMedium!
                                     .fontSize,
                               ),
                             ),
@@ -175,12 +175,14 @@ class _MainPageState extends State<MainPage>
                         ),
                         Text(
                           'Solitaire',
-                          style:
-                              Theme.of(context).textTheme.headline4?.copyWith(
-                                    color: Theme.of(context)
-                                        .hintColor
-                                        .withOpacity(0.1),
-                                  ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineMedium
+                              ?.copyWith(
+                                color: Theme.of(context)
+                                    .hintColor
+                                    .withOpacity(0.1),
+                              ),
                         ),
                       ],
                     ),
@@ -288,7 +290,7 @@ class _MainPageState extends State<MainPage>
                             },
                             child: Text(
                               'You won!',
-                              style: Theme.of(context).textTheme.headline3,
+                              style: Theme.of(context).textTheme.displaySmall,
                             ),
                           ),
                           const SizedBox(height: 16.0),
@@ -319,7 +321,7 @@ class _MainPageState extends State<MainPage>
       children: [
         Text(
           'quards',
-          style: Theme.of(context).textTheme.headline2?.copyWith(
+          style: Theme.of(context).textTheme.displayMedium?.copyWith(
                 // color: Theme.of(context)
                 //     .hintColor
                 //     .withOpacity(0.1),
@@ -331,7 +333,7 @@ class _MainPageState extends State<MainPage>
         ),
         Text(
           'quards',
-          style: Theme.of(context).textTheme.headline2?.copyWith(
+          style: Theme.of(context).textTheme.displayMedium?.copyWith(
                 color: Color.lerp(Theme.of(context).hintColor,
                     Theme.of(context).scaffoldBackgroundColor, 0.9),
                 // foreground: Paint()
@@ -574,11 +576,12 @@ class _MainPageState extends State<MainPage>
     return DragTarget<SolitaireCardLocation>(
       key: pileKeys[pile],
       onLeave: (details) {},
-      onWillAccept: (SolitaireCardLocation? location) {
-        if (location == null) {
+      onWillAcceptWithDetails:
+          (DragTargetDetails<SolitaireCardLocation>? details) {
+        if (details == null) {
           return false;
         } else {
-          return game.canMoveToPile(location, pile);
+          return game.canMoveToPile(details.data, pile);
         }
       },
       onMove: (DragTargetDetails<SolitaireCardLocation> details) {
@@ -588,7 +591,9 @@ class _MainPageState extends State<MainPage>
           });
         }
       },
-      onAccept: (SolitaireCardLocation originalLocation) {
+      onAcceptWithDetails: (DragTargetDetails<SolitaireCardLocation>? details) {
+        final originalLocation = details?.data;
+        if (originalLocation == null) return;
         final movedCard = game.cardAt(originalLocation);
         releasedCardOrigin[movedCard.standardCard] = originalLocation;
         releasedCardDestination[movedCard.standardCard] =

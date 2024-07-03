@@ -54,10 +54,10 @@ class DraggableCard<T extends Object> extends StatefulWidget {
   }
 
   @override
-  _DraggableCardState createState() => _DraggableCardState();
+  DraggableCardState createState() => DraggableCardState();
 }
 
-class _DraggableCardState<T extends Object> extends State<DraggableCard<T>>
+class DraggableCardState<T extends Object> extends State<DraggableCard<T>>
     with TickerProviderStateMixin {
   final double maxRotationDegrees = 15;
   final double maxVelocity = 2500;
